@@ -190,9 +190,9 @@ class BMPStats(Packet):
     name = "BMPStats"
     fields_desc = [
         PacketField("PerPeer", None, PerPeerHeader),
-        FieldLenField("len", None, count_of="counters"),
+        FieldLenField("len", None, fmt="I", count_of="counters"),
         PacketListField(
-            "counters", None, BMPStatsCounter, count_from=lambda pkt: pkt.len
+            "counters", None, BMPStatsCounter, count_from=lambda pkt: pkt.length
         ),
     ]
 
